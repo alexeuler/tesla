@@ -1,4 +1,4 @@
-<%= form_for(@store_item) do |f| %>
+<%= form_for @store_item, html:{class:"form"} do |f| %>
   <% if @store_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@store_item.errors.count, "error") %> prohibited this store_item from being saved:</h2>
@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :name, "Название" %><br>
+    <%= f.text_field :name, class:"form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :group, "Группа" %><br>
+    <%= f.text_field :group, class:"form-control"%>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
