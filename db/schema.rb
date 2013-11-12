@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111211914) do
+ActiveRecord::Schema.define(version: 20131112185432) do
 
   create_table "store_items", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.string   "group"
+  end
+
+  create_table "store_pages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "html"
+    t.integer  "store_item_id"
   end
 
 end
