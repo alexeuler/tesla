@@ -14,7 +14,8 @@ class Store::PagesController < ApplicationController
 
   # GET /store/pages/new
   def new
-    @store_page = Store::Page.new
+    @store_page = Store::Page.new(store_item_id: store_page_params[:id])
+    
   end
 
   # GET /store/pages/1/edit
@@ -69,6 +70,6 @@ class Store::PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_page_params
-      params[:store_page]
+      params.permit(:id)
     end
 end

@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :name, "Название" %><br>
+    <%= f.text_field :name, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :html, "Страница" %><br>
+    <%= f.text_area :html, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :store_item_id, "Item_id" %><br>
+    <%= f.text_field :store_item_id, class:"form-control"%>
+  </div>
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>
