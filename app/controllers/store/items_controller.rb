@@ -1,5 +1,5 @@
 class Store::ItemsController < ApplicationController
-  before_action :set_store_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_store_item, only: [:edit, :update, :destroy]
 
   # GET /store/items
   # GET /store/items.json
@@ -10,6 +10,8 @@ class Store::ItemsController < ApplicationController
   # GET /store/items/1
   # GET /store/items/1.json
   def show
+    @store_item = Store::Item.find_by route: params[:id]
+    @page=@store_item.store_pages.where(route: params[:page] || '').first
   end
 
   # GET /store/items/new
@@ -28,7 +30,7 @@ class Store::ItemsController < ApplicationController
 
     respond_to do |format|
       if @store_item.save
-        format.html { redirect_to @store_item, notice: 'Item was successfully created.' }
+        format.html { redirect_to store_items_url+"/#{@store_item.route}", notice: 'Item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @store_item }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class Store::ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @store_item.update(store_item_params)
-        format.html { redirect_to @store_item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to store_items_url+"/#{@store_item.route}", notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,8 +66,7 @@ class Store::ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store_item
-      @store_item = Store::Item.find_by route: params[:id]
-      @page=@store_item.store_pages.where(route: params[:page] || '').first
+      @store_item = Store::Item.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

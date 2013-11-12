@@ -13,7 +13,7 @@
 <p><%= link_to 'New page', new_store_page_path(id:@store_item.id)%></p>
 
 <h1>Page</h1>
-<p><%= @page.html %></p>
+<p><%= @page.html if @page %></p>
 
 
 <%= link_to 'Edit', edit_store_item_path(@store_item) %> |

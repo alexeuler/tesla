@@ -18,7 +18,7 @@
 	<td><%= store_item.name %></td>
 	<td><%= store_item.route %></td>
 	<td><%= store_item.group %></td>
-        <td><%= link_to 'Show', store_item %></td>
+        <td><%= link_to 'Show', store_items_path + "/#{store_item.route}" %></td>
         <td><%= link_to 'Edit', edit_store_item_path(store_item) %></td>
         <td><%= link_to 'Destroy', store_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
