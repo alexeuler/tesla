@@ -12,5 +12,9 @@
 </table>
 <p><%= link_to 'New page', new_store_page_path(id:@store_item.id)%></p>
 
+<h1>Page</h1>
+<p><%= @page.html %></p>
+
+
 <%= link_to 'Edit', edit_store_item_path(@store_item) %> |
 <%= link_to 'Back', store_items_path %>

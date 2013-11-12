@@ -64,7 +64,8 @@ class Store::ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store_item
-      @store_item = Store::Item.find(params[:id])
+      @store_item = Store::Item.find_by route: params[:id]
+      @page=@store_item.store_pages.where(route: params[:page] || '').first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

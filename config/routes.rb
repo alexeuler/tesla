@@ -1,7 +1,8 @@
 Zen::Application.routes.draw do
   namespace :store do
     resources :pages
-    resources :items
+    resources :items, except: [:show]
+    get "items/:id(/:page)" => 'items#show'
   end
 
 
