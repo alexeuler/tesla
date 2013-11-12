@@ -5,7 +5,7 @@
   <% @store_item.store_pages.each do |page| %>
 
   <tr>
-    <td><%=link_to page.name, store_page_path(page) %></td>
+    <td><%=link_to page.name, store_items_path+"/#{@store_item.route}/#{page.route}" %></td>
   </tr>
   <% end %>
 

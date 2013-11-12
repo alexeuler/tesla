@@ -70,6 +70,6 @@ class Store::PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_page_params
-      params.require(:store_page).permit(:name, :html, :store_item_id)
+      params.require(:store_page).permit(:name, :route, :html, :store_item_id)
     end
 end
