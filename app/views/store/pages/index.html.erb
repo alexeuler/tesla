@@ -3,6 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Название</th>
+      <th>Html</th>
+      <th>Item_id</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +15,9 @@
   <tbody>
     <% @store_pages.each do |store_page| %>
       <tr>
+	<td><%= store_page.name %></td>
+	<td><%= store_page.html %></td>
+	<td><%= store_page.store_item_id %></td>
         <td><%= link_to 'Show', store_page %></td>
         <td><%= link_to 'Edit', edit_store_page_path(store_page) %></td>
         <td><%= link_to 'Destroy', store_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 <p><%= @store_item.name %></p>
+<p>Pages</p>
+<table>
+  <% @store_item.store_pages.each do |page| %>
+
+  <tr>
+    <td><%=link_to page.name, store_page_path(page) %></td>
+  </tr>
+  <% end %>
+
+</table>
 <p><%= link_to 'New page', new_store_page_path(id:@store_item.id)%></p>
 
 <%= link_to 'Edit', edit_store_item_path(@store_item) %> |

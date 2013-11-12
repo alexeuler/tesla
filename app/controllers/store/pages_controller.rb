@@ -14,7 +14,7 @@ class Store::PagesController < ApplicationController
 
   # GET /store/pages/new
   def new
-    @store_page = Store::Page.new(store_item_id: store_page_params[:id])
+    @store_page = Store::Page.new(store_item_id: params[:id])
     
   end
 
@@ -70,6 +70,6 @@ class Store::PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_page_params
-      params.permit(:id)
+      params.require(:store_page).permit(:name, :html, :store_item_id)
     end
 end
