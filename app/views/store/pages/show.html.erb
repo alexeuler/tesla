@@ -1,4 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_store_page_path(@store_page) %> |
-<%= link_to 'Back', store_pages_path %>
+<%= link_to 'Edit', edit_store_page_path(@store_page) %>
+<%= link_to 'Back', store_item_path(@store_page.store_item.route) %>
