@@ -5,7 +5,12 @@
   <% @store_item.store_pages.each do |page| %>
 
   <tr>
-    <td><%=link_to page.name, store_items_path+"/#{@store_item.route}/#{page.route}" %></td>
+    <td>
+      <span><%=link_to page.name, store_items_path+"/#{@store_item.route}/#{page.route}" %></span>
+      <span><%= link_to 'Edit', edit_store_page_path(page)%></span>
+      <span><%= link_to 'Destroy', store_page_path(page), method: :delete, data: { confirm: 'Are you sure?' }%></span>
+      
+    </td>
   </tr>
   <% end %>
 

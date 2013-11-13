@@ -55,9 +55,10 @@ class Store::PagesController < ApplicationController
   # DELETE /store/pages/1
   # DELETE /store/pages/1.json
   def destroy
+    item=@store_page.store_item
     @store_page.destroy
     respond_to do |format|
-      format.html { redirect_to store_pages_url }
+      format.html { redirect_to store_item_path(item.route) }
       format.json { head :no_content }
     end
   end
