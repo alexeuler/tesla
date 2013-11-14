@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @store_item %> |
+<%= link_to 'Show', store_items_path + "/#{@store_item.route}" %> |
 <%= link_to 'Back', store_items_path %>

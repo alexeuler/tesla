@@ -17,7 +17,7 @@
 </table>
 <p><%= link_to 'New page', new_store_page_path(id:@store_item.id)%></p>
 
-<p><%= ERB.new(@page.html).result(binding).html_safe %></p>
+<p><%= ERB.new(@page.html).result(binding).html_safe if @page %></p>
 
 
 <%= link_to 'Edit', edit_store_item_path(@store_item) %> |
