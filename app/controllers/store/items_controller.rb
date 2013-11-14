@@ -1,5 +1,4 @@
 class Store::ItemsController < ApplicationController
-  include ActionView::Helpers::AssetTagHelper # for using in erb processing from database html page
 
   before_action :set_store_item, only: [:edit, :update, :destroy]
 
@@ -15,8 +14,7 @@ class Store::ItemsController < ApplicationController
   def show
     id,page_id=params[:id].split('/')
     @store_item = Store::Item.find_by route: id
-    page=@store_item.store_pages.where(route: page_id || '').first
-    @html=ERB.new(page.html).result(binding) if page
+    @page=@store_item.store_pages.where(route: page_id || '').first
   end
 
   # GET /store/items/new

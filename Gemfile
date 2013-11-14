@@ -43,7 +43,7 @@ gem 'capistrano', group: :development
 gem 'rvm-capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 
 
 
