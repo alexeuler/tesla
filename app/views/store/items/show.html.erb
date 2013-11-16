@@ -1,24 +1,28 @@
 <p id="notice"><%= notice %></p>
-<p><%= @store_item.name %></p>
-<p>Pages</p>
-<table>
-  <% @store_item.store_pages.each do |page| %>
+<div class="row">
+  <div class="col-md-3">
+    <div class="sidebar">
+      <ul class="nav nav-pills nav-stacked">
+	<% @store_item.store_pages.each do |page| %>
+	  <li class="<%="active" if @page.id== page.id %>">
+	    <%= link_to page.name, store_item_path(@store_item)+"/#{page.route}" %>
+	    <span>
+	    <%= link_to 'Правка', edit_store_page_path(page)%>
+	    <%= link_to 'Удалить', store_page_path(page), method: :delete, data: { confirm: 'Вы уверены?' }%>
+	    </span>
+	  </li>
+	<% end %>
+	<li>
+	  <%= link_to 'Новая', new_store_page_path(:id=>@store_item.id)%>
+	</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="main">
+      <%= ERB.new(@page.html).result(binding).html_safe if @page %>	
+    </div>
+  </div>
 
-  <tr>
-    <td>
-      <span><%=link_to page.name, store_items_path+"/#{@store_item.route}/#{page.route}" %></span>
-      <span><%= link_to 'Edit', edit_store_page_path(page)%></span>
-      <span><%= link_to 'Destroy', store_page_path(page), method: :delete, data: { confirm: 'Are you sure?' }%></span>
-      
-    </td>
-  </tr>
-  <% end %>
-
-</table>
-<p><%= link_to 'New page', new_store_page_path(id:@store_item.id)%></p>
-
-<p><%= ERB.new(@page.html).result(binding).html_safe if @page %></p>
-
-
-<%= link_to 'Edit', edit_store_item_path(@store_item) %> |
-<%= link_to 'Back', store_items_path %>
+<%= link_to 'Правка', edit_store_item_path(@store_item) %> |
+<%= link_to 'Удалить', store_items_path %>

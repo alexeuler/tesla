@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Store::ItemsController < ApplicationController
 
   before_action :set_store_item, only: [:show, :edit, :update, :destroy]
@@ -13,6 +14,8 @@ class Store::ItemsController < ApplicationController
   # GET /store/items/1.json
   def show
     @page=@store_item.store_pages.find_by_route(params[:page_id]||'')
+    @crumbs[@store_item.name]=store_item_path(@store_item.route)
+    @crumbs[@page.name]=store_item_path(@store_item.route)+"/#{@page.route}" if @page
   end
 
   # GET /store/items/new
@@ -74,4 +77,10 @@ class Store::ItemsController < ApplicationController
     def store_item_params
       params.require(:store_item).permit(:name, :route, :group)
     end
+
+    def set_view_params
+      super
+      @crumbs['Магазин']=store_path
+    end
+
 end
