@@ -1,6 +1,6 @@
 class Store::ItemsController < ApplicationController
 
-  before_action :set_store_item, only: [:edit, :update, :destroy]
+  before_action :set_store_item, only: [:show, :edit, :update, :destroy]
 
 
   # GET /store/items
@@ -12,9 +12,7 @@ class Store::ItemsController < ApplicationController
   # GET /store/items/1
   # GET /store/items/1.json
   def show
-    id,page_id=params[:id].split('/')
-    @store_item = Store::Item.find_by route: id
-    @page=@store_item.store_pages.where(route: page_id || '').first
+    @page=@store_item.store_pages.find_by_route(params[:page_id]||'')
   end
 
   # GET /store/items/new
