@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-3">
-    <div class="sidebar">
+    <div class="sidebar bordered">
       <ul class="nav nav-pills nav-stacked">
 	<% @store_item.store_pages.each do |page| %>
 	  <li class="<%="active" if @page.id== page.id %>">
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="col-md-9">
-    <div class="main">
+    <div class="main  bordered">
       <%= ERB.new(@page.html).result(binding).html_safe if @page %>	
     </div>
   </div>

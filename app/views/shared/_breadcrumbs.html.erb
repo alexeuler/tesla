@@ -1,4 +1,4 @@
-<ol class="breadcrumb">
+<ol class="breadcrumb light-bordered">
   <% crumbs.each_with_index do |elem,index| %>
     <li class="<%= "active" if index == crumbs.length-1 %>">
       <%= link_to_if(index != crumbs.length-1, elem[0], elem[1] ) %>

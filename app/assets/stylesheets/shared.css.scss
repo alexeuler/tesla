@@ -1,0 +1,8 @@
+.bordered{
+    @include box-shadow(0px 0px 3px #000);
+}
+
+.light-bordered{
+    @include box-shadow(0px 0px 3px #555);
+}
+
