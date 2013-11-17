@@ -1,4 +1,5 @@
 Zen::Application.routes.draw do
+  get "store" => 'store#index'
   namespace :store do
     resources :pages
     resources :items
@@ -6,7 +7,7 @@ Zen::Application.routes.draw do
   end
 
 
-  get "store" => 'store#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
