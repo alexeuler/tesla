@@ -1,4 +1,3 @@
-
 @import "bootstrap";
 @import "twitter/bootstrap";
 @import "shared";
@@ -17,11 +16,7 @@
 }
 
 .navbar-default{
+    padding:5px;
     border:none;
-    background-color:#fff;
     }
 
-.breadcrumb{
-    margin-left:15px;
-    margin-right:15px;
-    }
