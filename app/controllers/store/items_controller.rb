@@ -14,6 +14,7 @@ class Store::ItemsController < ApplicationController
   # GET /store/items/1.json
   def show
     @page=@store_item.store_pages.find_by_route(params[:page_id]||'')
+    @lead=Store::Lead.new
     @crumbs[@store_item.name]=store_item_path(@store_item.route)
     @crumbs[@page.name]=store_item_path(@store_item.route)+"/#{@page.route}" if @page
   end

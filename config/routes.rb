@@ -1,4 +1,8 @@
 Zen::Application.routes.draw do
+  namespace :store do
+    resources :leads
+  end
+
   get "store" => 'store#index'
   namespace :store do
     resources :pages

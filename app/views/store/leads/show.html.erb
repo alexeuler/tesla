@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @store_lead.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @store_lead.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @store_lead.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @store_lead.address %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @store_lead.comments %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @store_lead.quantity %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @store_lead.color %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @store_lead.size %>
+</p>
+
+<p>
+  <strong>Aux:</strong>
+  <%= @store_lead.aux %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @store_lead.item_id %>
+</p>
+
+<%= link_to 'Edit', edit_store_lead_path(@store_lead) %> |
+<%= link_to 'Back', store_leads_path %>

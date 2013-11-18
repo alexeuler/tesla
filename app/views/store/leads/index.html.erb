@@ -1,0 +1,45 @@
+<h1>Listing store_leads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Comments</th>
+      <th>Quantity</th>
+      <th>Color</th>
+      <th>Size</th>
+      <th>Aux</th>
+      <th>Item</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @store_leads.each do |store_lead| %>
+      <tr>
+        <td><%= store_lead.name %></td>
+        <td><%= store_lead.phone %></td>
+        <td><%= store_lead.email %></td>
+        <td><%= store_lead.address %></td>
+        <td><%= store_lead.comments %></td>
+        <td><%= store_lead.quantity %></td>
+        <td><%= store_lead.color %></td>
+        <td><%= store_lead.size %></td>
+        <td><%= store_lead.aux %></td>
+        <td><%= store_lead.item_id %></td>
+        <td><%= link_to 'Show', store_lead %></td>
+        <td><%= link_to 'Edit', edit_store_lead_path(store_lead) %></td>
+        <td><%= link_to 'Destroy', store_lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lead', new_store_lead_path %>

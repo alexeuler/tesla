@@ -20,7 +20,7 @@
   </div>
   <div class="col-md-9">
     <div class="main  bordered">
-      <%= ERB.new(@page.html).result(binding).html_safe if @page %>	
+      <%= ActionView::Template::Handlers::Erubis.new(@page.html).result(binding).html_safe if @page %>	
     </div>
   </div>
 

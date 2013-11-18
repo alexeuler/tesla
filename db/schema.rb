@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112203326) do
+ActiveRecord::Schema.define(version: 20131118195536) do
 
   create_table "store_items", force: true do |t|
     t.datetime "created_at"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20131112203326) do
     t.string   "name"
     t.string   "group"
     t.string   "route"
+  end
+
+  create_table "store_leads", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.text     "comments"
+    t.integer  "quantity"
+    t.string   "color"
+    t.string   "size"
+    t.string   "aux"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "store_pages", force: true do |t|
