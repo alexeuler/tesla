@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+require 'my_erb'
+
 class Store::ItemsController < ApplicationController
 
   before_action :set_store_item, only: [:show, :edit, :update, :destroy]

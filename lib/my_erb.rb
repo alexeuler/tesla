@@ -1,7 +1,11 @@
 class MyERB< Erubis::Eruby
+
+  #This is the same as Erubis class in rails (rails / actionview / lib / action_view / template / handlers / erb.rb)
+  #The only thing that's changed is commented out output_buffer redefinition
+  #This is required for correct form_for behavior
         def add_preamble(src)
           @newline_pending = 0
-          src << "@output_buffer1 = ActionView::OutputBuffer.new;"
+          #src << "@output_buffer = output_buffer || ActionView::OutputBuffer.new;"
         end
 
         def add_text(src, text)
@@ -10,7 +14,7 @@ class MyERB< Erubis::Eruby
           if text == "\n"
             @newline_pending += 1
           else
-            src << "@output_buffer1.safe_append='"
+            src << "@output_buffer.safe_append='"
             src << "\n" * @newline_pending if @newline_pending > 0
             src << escape_text(text)
             src << "';"
@@ -35,18 +39,18 @@ class MyERB< Erubis::Eruby
         def add_expr_literal(src, code)
           flush_newline_if_pending(src)
           if code =~ BLOCK_EXPR
-            src << '@output_buffer1.append= ' << code
+            src << '@output_buffer.append= ' << code
           else
-            src << '@output_buffer1.append=(' << code << ');'
+            src << '@output_buffer.append=(' << code << ');'
           end
         end
 
         def add_expr_escaped(src, code)
           flush_newline_if_pending(src)
           if code =~ BLOCK_EXPR
-            src << "@output_buffer1.safe_append= " << code
+            src << "@output_buffer.safe_append= " << code
           else
-            src << "@output_buffer1.safe_append=(" << code << ");"
+            src << "@output_buffer.safe_append=(" << code << ");"
           end
         end
 
@@ -57,16 +61,13 @@ class MyERB< Erubis::Eruby
 
         def add_postamble(src)
           flush_newline_if_pending(src)
-          debugger
-          src << '@output_buffer1.to_s'
-          
+          src << '@output_buffer.to_s'
         end
 
         def flush_newline_if_pending(src)
           if @newline_pending > 0
-            src << "@output_buffer1.safe_append='#{"\n" * @newline_pending}';"
+            src << "@output_buffer.safe_append='#{"\n" * @newline_pending}';"
             @newline_pending = 0
           end
         end
-
 end

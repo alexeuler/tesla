@@ -20,7 +20,10 @@
   </div>
   <div class="col-md-9">
     <div class="main  bordered">
-      <%= ActionView::Template::Handlers::Erubis.new(@page.html).result(binding).html_safe if @page %>	
+      <%# Dirty hack, removing= empitically as it doubles the whole page%>
+      <%# Doubling because it uses the same @output_buffer variable %>
+
+      <% MyERB.new(@page.html).result(binding) if @page %>	
     </div>
   </div>
 
