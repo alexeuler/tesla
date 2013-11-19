@@ -16,7 +16,7 @@ class Store::ItemsController < ApplicationController
   # GET /store/items/1
   # GET /store/items/1.json
   def show
-    @page=@store_item.store_pages.find_by_route(params[:page_id]||'')
+    @page=@store_item.store_pages.select {|item| item.route==(params[:page_id]||'')} [0]
     @lead=Store::Lead.new
     @crumbs[@store_item.name]=store_item_path(@store_item.route)
     @crumbs[@page.name]=store_item_path(@store_item.route)+"/#{@page.route}" if @page
@@ -74,7 +74,7 @@ class Store::ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store_item
-      @store_item = Store::Item.find(params[:id])
+      @store_item = Store::Item.includes(:store_pages).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
