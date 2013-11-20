@@ -9,19 +9,21 @@
 	  </li>
 	<% end %>
 	<li>
-	  <%= link_to 'Новая', new_store_page_path(:id=>@store_item.id)%>
+	  <%= link_to 'Новая', new_store_page_path(:id=>@store_item.id) if admin?%>
 	</li>
       </ul>
     </div>
   </div>
   <div class="col-md-9">
-    <div class="main  bordered">
-      <%# Dirty hack, removing= empitically as it doubles the whole page%>
-      <%# Doubling because it uses the same @output_buffer variable %>
+    <div class="main bordered">
+      <%if admin?%>
       <p>
 	<%= link_to 'Правка', edit_store_page_path(@page)%> |
 	<%= link_to 'Удалить', store_page_path(@page), method: :delete, data: { confirm: 'Вы уверены?' }%>
       </p>
+      <%end%>
+      <%# Dirty hack, removing= empitically as it doubles the whole page%>
+      <%# Doubling because it uses the same @output_buffer variable %>
 
       <% MyERB.new(@page.html).result(binding) if @page %>	
     </div>

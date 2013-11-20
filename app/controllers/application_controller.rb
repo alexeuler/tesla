@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
+  helper_method :admin?
   before_action :set_view_params
 
   protected
@@ -12,5 +12,8 @@ class ApplicationController < ActionController::Base
     @crumbs={'Главная'=>root_path}
   end
 
+  def admin?
+    user_signed_in? && current_user.admin?
+  end
 
 end
