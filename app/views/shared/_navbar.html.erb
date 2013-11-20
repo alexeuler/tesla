@@ -26,21 +26,21 @@
       <%if user_signed_in?%>
 	<li><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></li>
 	<%else%>
-      <li class="dropdown">
+      <li class="login dropdown">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Войти <b class="caret"></b></a>
 	
 	<ul class="dropdown-menu">
 	  <li>
 	    
-	    <%= form_tag(new_user_session_path, class:"navbar-form form-inline") do |f| %>
+	    <%= form_tag(new_user_session_path) do |f| %>
 	      <div class="form-group">
-		<%= email_field_tag "user[email]", nil, placeholder:"Login"%>
+		<%= email_field_tag "user[email]", nil, placeholder:"Login", class: "form-control"%>
 
 	      </div>
-	      <div>
-		<%= password_field_tag "user[password]", nil, placeholder:"Password"%>
+	      <div class="form-group">
+		<%= password_field_tag "user[password]", nil, placeholder:"Password", class: "form-control"%>
 	      </div>
-	      <%= submit_tag "Sign in" %>
+	      <%= submit_tag "Sign in", class:"btn btn-primary" %>
 	    <% end %>
 
 	  </li>
