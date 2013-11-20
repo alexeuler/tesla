@@ -1,4 +1,5 @@
 Zen::Application.routes.draw do
+  devise_for :users
   namespace :store do
     resources :leads
   end

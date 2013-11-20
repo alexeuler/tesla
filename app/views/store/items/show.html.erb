@@ -18,10 +18,10 @@
     <div class="main  bordered">
       <%# Dirty hack, removing= empitically as it doubles the whole page%>
       <%# Doubling because it uses the same @output_buffer variable %>
-      <span>
+      <p>
 	<%= link_to 'Правка', edit_store_page_path(@page)%> |
 	<%= link_to 'Удалить', store_page_path(@page), method: :delete, data: { confirm: 'Вы уверены?' }%>
-      </span>
+      </p>
 
       <% MyERB.new(@page.html).result(binding) if @page %>	
     </div>
