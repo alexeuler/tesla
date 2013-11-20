@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-require 'my_erb'
-
 class Store::ItemsController < ApplicationController
 
   before_action :set_store_item, only: [:show, :edit, :update, :destroy]
-  #before_action :require_admin, except: [:show, :index]
+  before_action :require_admin, except: [:show, :index]
 
   # GET /store/items
   # GET /store/items.json
@@ -82,7 +80,7 @@ class Store::ItemsController < ApplicationController
       params.require(:store_item).permit(:name, :route, :group)
     end
 
-    def set_view_params
+    def set_crumbs
       super
       @crumbs['Магазин']=store_path
     end

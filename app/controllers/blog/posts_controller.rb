@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 class Blog::PostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, excep: [:index, :show]
+  before_action :require_admin, except: [:index, :show]
   # GET /blog/posts
   # GET /blog/posts.json
   def index
@@ -70,5 +71,10 @@ class Blog::PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_post_params
       params.require(:blog_post).permit(:header, :route, :tag, :page)
+    end
+
+    def set_crumbs
+      super
+      @crumbs['Блог']=blog_posts_path
     end
 end
