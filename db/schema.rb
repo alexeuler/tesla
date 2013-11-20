@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120075245) do
+ActiveRecord::Schema.define(version: 20131120203252) do
+
+  create_table "blog_posts", force: true do |t|
+    t.string   "header"
+    t.string   "route"
+    t.string   "tag"
+    t.text     "page"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "store_items", force: true do |t|
     t.datetime "created_at"

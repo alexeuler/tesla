@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  header: MyString
+  route: MyString
+  tag: MyString
+  page: MyText
+
+two:
+  header: MyString
+  route: MyString
+  tag: MyString
+  page: MyText

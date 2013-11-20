@@ -1,4 +1,8 @@
 Zen::Application.routes.draw do
+  namespace :blog do
+    resources :posts
+  end
+
   devise_for :users
   namespace :store do
     resources :leads

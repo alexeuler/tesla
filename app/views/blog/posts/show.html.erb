@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @blog_post.header %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @blog_post.route %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @blog_post.tag %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @blog_post.page %>
+</p>
+
+<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+<%= link_to 'Back', blog_posts_path %>
