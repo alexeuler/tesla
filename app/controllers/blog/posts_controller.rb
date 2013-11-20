@@ -1,6 +1,6 @@
 class Blog::PostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_admin, excep: [:index, :show]
   # GET /blog/posts
   # GET /blog/posts.json
   def index
