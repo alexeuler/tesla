@@ -33,8 +33,8 @@
         <td><%= store_lead.aux %></td>
         <td><%= store_lead.item_id %></td>
         <td><%= link_to 'Show', store_lead %></td>
-        <td><%= link_to 'Edit', edit_store_lead_path(store_lead) %></td>
-        <td><%= link_to 'Destroy', store_lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_store_lead_path(store_lead) if admin? %></td>
+        <td><%= link_to 'Destroy', store_lead, method: :delete, data: { confirm: 'Are you sure?' } if admin?%></td>
       </tr>
     <% end %>
   </tbody>

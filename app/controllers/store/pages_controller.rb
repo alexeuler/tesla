@@ -1,5 +1,6 @@
 class Store::PagesController < ApplicationController
   before_action :set_store_page, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   # GET /store/pages
   # GET /store/pages.json

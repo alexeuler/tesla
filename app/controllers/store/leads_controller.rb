@@ -1,5 +1,6 @@
 class Store::LeadsController < ApplicationController
   before_action :set_store_lead, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   # GET /store/leads
   # GET /store/leads.json

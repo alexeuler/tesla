@@ -5,7 +5,7 @@ require 'my_erb'
 class Store::ItemsController < ApplicationController
 
   before_action :set_store_item, only: [:show, :edit, :update, :destroy]
-
+  #before_action :require_admin, except: [:show, :index]
 
   # GET /store/items
   # GET /store/items.json
