@@ -1,9 +1,21 @@
+@font-face {
+    font-family: 'DidactGothic1';
+    src: asset-url('didactgothic-webfont.eot');
+    src: asset-url('didactgothic-webfont.eot') format('embedded-opentype'),
+    asset-url('didactgothic-webfont.svg') format('svg'),    
+    asset-url('didactgothic-webfont.ttf') format('truetype'),    
+    asset-url('didactgothic-webfont.woff') format('woff');
+    }
+
 @import "bootstrap";
 @import "twitter/bootstrap";
 @import "shared";
 @import "store";
 @import "store/items";
 @import "store/pages";
+
+
+
 
 .global-container {
     background-color:#E7EFF0;
@@ -30,3 +42,4 @@
 	    }
 	}
     }
+
