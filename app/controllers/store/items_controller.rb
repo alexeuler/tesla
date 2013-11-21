@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'my_erb'
 
 class Store::ItemsController < ApplicationController
 
