@@ -15,8 +15,8 @@
   
   <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'Блог', blog_posts_path %></li>
-      <li class="dropdown">
+      <li class="<%=@path&&@path.include?(blog_posts_path) ? "active" : ""%>"><%= link_to 'Блог', blog_posts_path%></li>
+      <li class="dropdown <%=@path&&@path.include?(store_items_path) ? "active" : ""%>">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown"> В магазине <b class="caret"></b></a>
 	<ul class="dropdown-menu">
 	  <li><a href="<%=store_items_path%>">Кинетический песок</a></li>

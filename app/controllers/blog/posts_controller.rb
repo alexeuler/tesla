@@ -77,8 +77,9 @@ class Blog::PostsController < ApplicationController
       params.require(:blog_post).permit(:header, :route, :tag, :page)
     end
 
-    def set_crumbs
+    def set_layout_params
       super
+      @path=request.path
       @crumbs['Блог']=blog_posts_path
     end
 end

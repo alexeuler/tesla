@@ -80,7 +80,7 @@ class Store::ItemsController < ApplicationController
       params.require(:store_item).permit(:name, :route, :group)
     end
 
-    def set_crumbs
+    def set_layout_params
       super
       @crumbs['Магазин']=store_path
     end
