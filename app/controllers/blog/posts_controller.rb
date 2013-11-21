@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+require 'my_erb'
+
 class Blog::PostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: [:index, :show]
@@ -11,6 +14,7 @@ class Blog::PostsController < ApplicationController
   # GET /blog/posts/1
   # GET /blog/posts/1.json
   def show
+    @crumbs[@blog_post.header]=@blog_post.route
   end
 
   # GET /blog/posts/new
