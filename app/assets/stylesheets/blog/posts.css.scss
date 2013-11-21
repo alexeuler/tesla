@@ -25,3 +25,11 @@
     }
 
 }
+
+.blog-post-likes{
+    text-align:right;
+    span{
+	line-height:$font-size-base;
+	vertical-align:bottom;
+    }
+}
