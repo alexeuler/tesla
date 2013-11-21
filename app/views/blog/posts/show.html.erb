@@ -1,13 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<div class='blog-post-show-page'>
-  <p><% MyERB.new(@blog_post.uncut_page).result(binding)%></p>
-
+<div class="blog-post-show-container">
+  <div class="blog-post-index-header">
+    <h2><%= @blog_post.header %></h2>
+  </div>
+  <div class="blog-post-index-time">
+    <h6>
+      <small>
+	<%= @blog_post.created_at.localtime.strftime("%d-%m-%Y")%>&nbsp;
+	<%= @blog_post.created_at.localtime.strftime("%H:%M")%>
+      </small>
+    </h6>
+  </div>
+  <div class="blog-post-show-page">
+    <% MyERB.new(@blog_post.uncut_page).result(binding)%>
+  </div>
   <% if admin? %>
     <%= link_to "Правка", edit_blog_post_path(@blog_post)%> |
     <%= link_to "Удалить", @blog_post, method: :delete, data: { confirm: 'Are you sure?' }%>
   <% end %>
-
 </div>
 
 

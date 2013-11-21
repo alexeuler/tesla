@@ -1,12 +1,11 @@
 .bordered{
-    @include box-shadow(0px 0px 3px #000);
+    @include bordered();
 }
 
 .light-bordered{
-    @include box-shadow(0px 0px 3px #555);
+    @include light-bordered();
 }
 
 .framed{
-    border:7px solid #fff;
-    @include box-shadow(0px 0px 10px); 
-    }
+    @include framed();
+}

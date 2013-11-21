@@ -1,25 +1,33 @@
 <%= link_to 'Новый пост', new_blog_post_path if admin? %>
-<% @blog_posts.each do |blog_post| %>
-      <div class="blog-post-index-header">
-	<h2><%= blog_post.header %></h2>
-      </div>
-      <div class="blog-post-index-time">
-	<%= blog_post.created_at.localtime.strftime("%d-%m-%Y")%>&nbsp;&nbsp;&nbsp;
-	<%= blog_post.created_at.localtime.strftime("%H:%M")%>
-      </div>
-      <div class="blog-post-index-page">
-	<p><% MyERB.new(blog_post.cut_page).result(binding)%></p>
-	<%= link_to "Подробнее", blog_post %>
-      </div>
-      <% if admin? %>
-	<%= link_to "Правка", edit_blog_post_path(blog_post)%> |
-	<%= link_to "Удалить", blog_post, method: :delete, data: { confirm: 'Are you sure?' }%>
-      <% end %>
+<p id="notice"><%= notice %></p>
 
-    <% end %>
-  </tbody>
-</table>
+<div class="blog-posts-container">
+  <% @blog_posts.each do |blog_post| %>
+    <div class="col-md-6">
+      <div class="blog-post-container">
+	<div class="blog-post-index-header">
+	  <h2><%= blog_post.header %></h2>
+	</div>
+	<div class="blog-post-index-time">
+	  <h6>
+	    <small>
+	      <%= blog_post.created_at.localtime.strftime("%d-%m-%Y")%>&nbsp;
+	      <%= blog_post.created_at.localtime.strftime("%H:%M")%>
+	    </small>
+	  </h6>
+	</div>
+	<div class="blog-post-index-page">
+	  <p><% MyERB.new(blog_post.cut_page).result(binding)%></p>
+	  <%= link_to "Подробнее", blog_post %>
+	</div>
+	<% if admin? %>
+	  <%= link_to "Правка", edit_blog_post_path(blog_post)%> |
+	  <%= link_to "Удалить", blog_post, method: :delete, data: { confirm: 'Are you sure?' }%>
+	<% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<br>
 
 

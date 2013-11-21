@@ -1,3 +1,27 @@
-// Place all the styles related to the blog::posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.blog-post-container {
+    @include bordered;
+    border-radius:5px;
+    background-color: $zen-bg-color;
+    padding:20px 20px;
+    margin:15px 0px;
+
+    .blog-post-index-page{
+	padding-top:20px;
+    }
+
+    h2, h6{ margin:0;}
+
+}
+
+.blog-post-show-container {
+    h2, h6{ margin:0;}
+    @include bordered;
+    border-radius:5px;
+    background-color: $zen-bg-color;
+    padding:20px 20px;
+
+    .blog-post-show-page{
+	padding-top:20px;
+    }
+
+}
