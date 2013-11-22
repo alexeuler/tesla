@@ -1,53 +1,9 @@
-<nav class="navbar navbar-default bordered" role="navigation">
-  
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Навигация</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      <%= image_tag "logo.png", style:"width:48px; height:48px, display:inline-block" %>
-      <p style="display:inline-block; margin:0; font-size:36px; position:relative; bottom:-8px">Лаборатория</p>
-    </a>
+<div class="zen-navbar">
+  <div class="zen-navbar-left">
+    <%=image_tag 'logo.png'%>
+    <span class="zen-navbar-header">
+      <p class="zen-navbar-brand">Tesla</p>
+      <p class="zen-navbar-brand-desc">Cool new stuff and more</p>
+    </span>
   </div>
-  
-  <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="<%=@path&&@path.include?(blog_posts_path) ? "active" : ""%>"><%= link_to 'Блог', blog_posts_path%></li>
-      <li class="dropdown <%=@path&&@path.include?(store_items_path) ? "active" : ""%>">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown"> В магазине <b class="caret"></b></a>
-	<ul class="dropdown-menu">
-	  <li><a href="<%=store_items_path%>">Кинетический песок</a></li>
-	</ul>
-      </li>
-      
-      <li><a href="#">Контакты</a></li>
-      <%if user_signed_in?%>
-	<li><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></li>
-	<%else%>
-      <li class="login dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Войти <b class="caret"></b></a>
-	
-	<ul class="dropdown-menu">
-	  <li>
-	    
-	    <%= form_tag(new_user_session_path) do |f| %>
-	      <div class="form-group">
-		<%= email_field_tag "user[email]", nil, placeholder:"Login", class: "form-control"%>
-
-	      </div>
-	      <div class="form-group">
-		<%= password_field_tag "user[password]", nil, placeholder:"Password", class: "form-control"%>
-	      </div>
-	      <%= submit_tag "Sign in", class:"btn btn-primary" %>
-	    <% end %>
-
-	  </li>
-	</ul>
-      </li>
-      <%end%>
-    </ul>
-  </div>
-</nav>
+</div>
