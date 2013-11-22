@@ -1,9 +1,18 @@
 <div class="zen-navbar">
-  <div class="zen-navbar-left">
+  <span class="zen-navbar-left">
     <%=image_tag 'logo.png'%>
     <span class="zen-navbar-header">
-      <p class="zen-navbar-brand">Tesla</p>
-      <p class="zen-navbar-brand-desc">Cool new stuff and more</p>
+      <p class="zen-navbar-brand">Тесла</p>
+      <p class="zen-navbar-brand-desc">Лучшие зарубежные новинки</p>
     </span>
+  </span>
+  <div class="zen-navbar-right">
+    <table>
+      <tr>
+	<td class="<%=@path&&@path.include?(blog_posts_path) ? "active" : ""%>"><%= link_to 'Блог', blog_posts_path %></td>
+	<td class="<%=@path&&@path.include?(store_items_path) ? "active" : ""%>"><%= link_to 'Магазин', store_items_path %></td>
+	<td class="<%=@path&&@path.include?(new_user_session_path) ? "active" : ""%>"><%= link_to 'Войти', new_user_session_path %></td>
+      </tr>
+    </table>
   </div>
 </div>

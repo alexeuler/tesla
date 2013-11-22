@@ -8,14 +8,11 @@
   </head>
   <body>
     <div class="global-container">
-      
       <%= render partial: "shared/navbar"%>
-      
-      <%= render partial: "shared/breadcrumbs", :locals=>{
-	    :crumbs =>@crumbs}%>
-
-      <p id="notice"><%= notice %></p>
       <div class="application-container">
+	<p id="notice"><%= notice %></p>
+	<%= render partial: "shared/breadcrumbs", :locals=>{
+	    :crumbs =>@crumbs}%>
 	<%= yield %>	
       </div>
     </div>
