@@ -1,6 +1,16 @@
 // Place all the styles related to the store::items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.store-item-container{
+    display:inline-block;
+    @include bordered;
+    background-color:$zen-store-item-bg-color;
+    padding:10px;
+    margin:20px;
+    text-align:center;
+    }
+
 .sidebar{
     background-color:$zen-bg-color;
     padding:10px;

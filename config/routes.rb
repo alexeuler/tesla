@@ -1,27 +1,27 @@
 Zen::Application.routes.draw do
+  devise_for :users
+
   namespace :blog do
     resources :posts
   end
 
-  devise_for :users
-  namespace :store do
-    resources :leads
-  end
 
   get "store" => 'store#index'
   namespace :store do
+    resources :leads
     resources :pages
     resources :items
     get "items/:id/(:page_id)" => "items#show"
+
   end
 
-
+  root "store/items#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'store#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
