@@ -50,6 +50,8 @@ gem 'debugger', group: [:development, :test]
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'mysql2'
 gem 'kaminari'
 gem 'friendly_id'

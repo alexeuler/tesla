@@ -2,6 +2,12 @@
     @include box-shadow(0px 0px 3px #000);
 }
 
+@mixin zen-panel($color:$zen-bg-color){
+    @include bordered;
+    background-color:$zen-bg-color;
+}
+
+
 @mixin light-bordered(){
     @include box-shadow(0px 0px 3px #555);
 }

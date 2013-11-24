@@ -83,7 +83,7 @@ class Store::ItemsController < ApplicationController
 
     def set_layout_params
       super
-      @crumbs['Магазин']=store_path
+      @crumbs['Магазин']=store_items_path
     end
 
 end

@@ -4,16 +4,14 @@
 
 .store-item-container{
     display:inline-block;
-    @include bordered;
-    background-color:$zen-store-item-bg-color;
+    @include zen-panel;
     padding:10px;
     margin:20px;
     text-align:center;
     }
 
 .sidebar{
-    @include bordered;
-    background-color:$zen-store-item-bg-color;
+    @include zen-panel;
     padding:10px;
     margin:0px 0px 10px 15px;
     border-radius: 10px;
@@ -21,8 +19,7 @@
 }
 
 .main{
-    @include bordered;
-    background-color:$zen-store-item-bg-color;
+    @include zen-panel;
     padding:10px;
     margin:0px 15px 10px 0px;
     border-radius: 10px;

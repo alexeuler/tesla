@@ -2,6 +2,8 @@ $font-family-sans-serif: "RobotoLight", Arial, sans-serif;
 $font-family-alt: "RobotoCondensedLight", Arial, sans-serif;
 $font-size-base:22px;
 
+
+$zen-bg-color:rgba(255,255,255,0.3);
 $zen-navbar-link-color:rgb(225,240,220);
 $zen-navbar-link-active-color:rgb(30,60,100);
 
@@ -9,7 +11,4 @@ $nav-pills-active-link-hover-color:$zen-navbar-link-active-color;
 $nav-pills-active-link-hover-bg:rgb(200,255,200);
 $nav-link-hover-bg:rgba(200,255,200,0.5);
 
-$zen-bg-color:rgba(255,255,255,0.8);
-$zen-blog-bg-color:rgba(255, 255, 255, 0.3);
-$zen-store-item-bg-color:rgba(255, 255, 255, 0.3);
 $breadcrumb-bg:transparent;
