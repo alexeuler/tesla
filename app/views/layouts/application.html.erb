@@ -13,7 +13,7 @@
 	<p id="notice"><%= notice %></p>
 	<%= render partial: "shared/breadcrumbs", :locals=>{
 	    :crumbs =>@crumbs}%>
-	<%= yield %>	
+	<%= content_for?(:content) ? yield(:content) : yield %>	
       </div>
     </div>
   </body>
