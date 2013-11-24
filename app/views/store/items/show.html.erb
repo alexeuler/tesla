@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-3">
-    <div class="sidebar bordered">
+    <div class="sidebar">
       <ul class="nav nav-pills nav-stacked">
 	<% @store_item.store_pages.each do |page| %>
 	  <li class="<%="active" if @page.id== page.id %>">
@@ -15,7 +14,7 @@
     </div>
   </div>
   <div class="col-md-9">
-    <div class="main bordered">
+    <div class="main">
       <%if admin?%>
       <p>
 	<%= link_to 'Правка', edit_store_page_path(@page)%> |

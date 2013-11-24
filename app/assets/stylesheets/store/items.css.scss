@@ -12,17 +12,19 @@
     }
 
 .sidebar{
-    background-color:$zen-bg-color;
+    @include bordered;
+    background-color:$zen-store-item-bg-color;
     padding:10px;
-    margin-bottom:10px;
+    margin:0px 0px 10px 15px;
     border-radius: 10px;
     
 }
 
 .main{
-    background-color:$zen-bg-color;
+    @include bordered;
+    background-color:$zen-store-item-bg-color;
     padding:10px;
-    margin-bottom:10px;
+    margin:0px 15px 10px 0px;
     border-radius: 10px;
     h1{
 	margin-top:0px;
