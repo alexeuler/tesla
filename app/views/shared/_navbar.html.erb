@@ -9,9 +9,9 @@
   <div class="zen-navbar-right">
     <table>
       <tr>
-	<td class="<%=@path&&@path.include?(blog_posts_path) ? "active" : ""%>"><%= link_to 'Блог', blog_posts_path %></td>
-	<td class="<%=@path&&@path.include?(store_items_path) ? "active" : ""%>"><%= link_to 'Магазин', store_items_path %></td>
-	<td class="<%=@path&&@path.include?(new_user_session_path) ? "active" : ""%>"><%= user_signed_in? ? link_to('Выйти', destroy_user_session_path, method: :delete) : link_to('Войти', new_user_session_path) %></td>
+	<td class="<%=controller.controller_name=='posts' ? "active" : ""%>"><%= link_to 'Блог', blog_posts_path %></td>
+	<td class="<%=controller.controller_name=='items' ? "active" : ""%>"><%= link_to 'Магазин', store_items_path %></td>
+	<td class="<%=['sessions', 'registrations', 'passwords'].include?(controller.controller_name) ? "active" : ""%>"><%= user_signed_in? ? link_to('Выйти', destroy_user_session_path, method: :delete) : link_to('Войти', new_user_session_path) %></td>
       </tr>
     </table>
   </div>

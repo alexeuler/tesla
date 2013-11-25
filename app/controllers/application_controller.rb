@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_layout_params
-    @path=request.path
     @crumbs={'Главная'=>root_path}
   end
 
