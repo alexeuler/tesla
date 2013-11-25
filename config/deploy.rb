@@ -62,6 +62,6 @@ namespace :deploy do
   desc "Symlinks the database.yml"
   task :symlink_db, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{deploy_to}/shared/sqlite3/production.sqlite3 #{release_path}/db/production.sqlite3"
+    run "ln -nfs #{deploy_to}/shared/db/production.sqlite3 #{release_path}/db/production.sqlite3"
   end
 end
