@@ -1,7 +1,11 @@
+require 'my_erb'
 module ApplicationHelper
-  def image_tag_zen(link, options={})
-    cls=options[:class]||""
-    alt=options[:alt]||""
-    "<img src=\'images/#{link}\' class=\'#{cls}\' alt=\'#{alt}\'>".html_safe
+  def render_from_text(text, context=nil)
+    begin
+      MyERB.new(text).result(context)
+      "" # Returns empty string as MyERB writes the result directly into view output buffer
+    rescue Exception => e
+      "<p>Error</p>".html_safe
+    end
   end
 end

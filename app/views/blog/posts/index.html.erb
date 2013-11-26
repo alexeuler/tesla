@@ -15,11 +15,7 @@
 	  </h6>
 	</div>
 	<div class="blog-post-index-page">
-	  <%begin%>
-	  <p><% MyERB.new(blog_post.cut_page).result(binding)%></p>
-	  <%rescue%>
-	  <p>Error</p>
-	  <%end%>
+	  <%=render_from_text(blog_post.cut_page, binding)%>
 	  <%= link_to "Подробнее", blog_post %>
 	  <%= render :partial => 'likes', locals:{likes:blog_post.likes} %>
 	</div>

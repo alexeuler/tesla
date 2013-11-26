@@ -21,14 +21,9 @@
 	<%= link_to 'Удалить', store_page_path(@page), method: :delete, data: { confirm: 'Вы уверены?' }%>
       </p>
       <%end%>
-      <%# Dirty hack, removing= empitically as it doubles the whole page%>
-      <%# Doubling because it uses the same @output_buffer variable %>
 
-      <%begin%>
-      <% MyERB.new(@page.html).result(binding) if @page %>
-      <%rescue%>
-      <p>Error</p>
-      <%end%>
+      <%=render_from_text(@page.html, binding)%>
+
     </div>
   </div>
 
