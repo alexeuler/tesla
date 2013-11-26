@@ -16,7 +16,7 @@
 	</div>
 	<div class="blog-post-index-page">
 	  <%=render_from_text(blog_post.cut_page, binding)%>
-	  <%= link_to "Подробнее", blog_post %>
+	  <p><%= link_to "Подробнее", blog_post %></p>
 	  <%= render :partial => 'likes', locals:{likes:blog_post.likes} %>
 	</div>
 	<% if admin? %>
