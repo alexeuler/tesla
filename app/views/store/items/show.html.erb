@@ -24,7 +24,11 @@
       <%# Dirty hack, removing= empitically as it doubles the whole page%>
       <%# Doubling because it uses the same @output_buffer variable %>
 
-      <% MyERB.new(@page.html).result(binding) if @page %>	
+      <%begin%>
+      <% MyERB.new(@page.html).result(binding) if @page %>
+      <%rescue%>
+      <p>Error</p>
+      <%end%>
     </div>
   </div>
 
