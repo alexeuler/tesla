@@ -1,7 +1,8 @@
 <%= link_to 'Новый пост', new_blog_post_path if admin? %>
 <div class="blog-posts-container">
+  <div class="row">
   <% @blog_posts.each do |blog_post| %>
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <div class="blog-post-container">
 	<div class="blog-post-index-header">
 	  <h2><%= blog_post.header %></h2>
@@ -26,7 +27,7 @@
       </div>
     </div>
   <% end %>
-  
+  </div>  
 </div>
 
 
