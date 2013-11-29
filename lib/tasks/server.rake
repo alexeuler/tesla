@@ -13,11 +13,14 @@ namespace :server do
     end
     
   end
+
   namespace :upload do
     desc "Uploads images from public folder to server"
     task :images => :environment do
-    system "scp -r #{Rails.root}/public/images #{deploy_path}/shared/"
+      system "scp -r #{Rails.root}/public/images #{deploy_path}/shared/"
     end
   end
 
 end
+
+

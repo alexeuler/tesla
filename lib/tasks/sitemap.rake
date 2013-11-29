@@ -1,61 +1,72 @@
 module Sitemap
   @@host="http://teslablog.ru/"
   @@res=""
+  @@level=0
   
   def self.res
     @@res
   end
 
+  def self.add(str)
+    @@res << Array.new(@@level*2, " ").join << str << "\n"
+  end
+
+  def self.add_header
+    self.add '<?xml version="1.0" encoding="UTF-8"?>'
+  end
+
   def self.add_url(path, options={})
-    @@res << Sitemap::url do
+    Sitemap::url do
       Sitemap::loc do
-        @@host+path
+        self.add @@host+path
       end
-#options here
+      options.each do |key, value|
+        Sitemap.send(key) do
+          self.add value
+        end
+      end
     end
   end
 
   def self.add_blog
     blog_path="blog/posts/"
-    add_url(blog_path)
-    Blog::Post.all.each do |post|
-      add_url(blog_path+post.route)
+    posts=Blog::Post.all
+    add_url blog_path,lastmod: posts.map(&:updated_at).max.strftime("%Y-%m-%d"), changefreq: 'weekly'
+    posts.each do |post|
+      add_url(blog_path+post.route, lastmod: post.updated_at.strftime("%Y-%m-%d"))
     end
   end
 
   def self.add_store
     store_path="store/items/"
-    add_url(store_path)
+    add_url(store_path, lastmod: Store::Page.maximum(:updated_at).strftime("%Y-%m-%d"))
     Store::Item.includes(:store_pages).all.each do |item|
-      add_url(store_path+item.route)
+      add_url(store_path+item.route, lastmod: item.store_pages.map(&:updated_at).max.strftime("%Y-%m-%d"))
       item.store_pages.each do |page|
-        add_url(store_path+item.route+"/#{page.route}")
+        add_url(store_path+item.route+"/#{page.route}", lastmod: page.updated_at.strftime("%Y-%m-%d"))
       end
     end
   end
-  def self.url
-    "<url>\n"+yield+"</url>\n"
-  end
-  def self.loc
-    "<loc>"+yield+"</loc>\n"
-  end
-  def self.lastmod
-    "<lastmod>"+yield+"</lastmod>\n"
-  end
-  def self.changefreq
-    "<changefreq>"+yield+"</changefreq>\n"
-  end
 
+  def self.method_missing(method_sym, *arguments, &block)
+    self.add "<#{method_sym}#{arguments.join}>"
+    @@level=@@level+1
+    block.call
+    @@level=@@level-1
+    self.add "<\\#{method_sym}>"
+  end
 end
 
 namespace :sitemap do
   desc "create sitemap"
   task :generate => :environment do
-    Sitemap.add_url("")
-    Sitemap.add_blog
-    Sitemap.add_store
-    #Store::Item.includes(:store_pages).all.each do |item|
-    puts Sitemap.res
+    Sitemap.add_header
+    Sitemap.urlset(' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"') do
+      Sitemap.add_url("", lastmod: Blog::Post.maximum(:updated_at).strftime("%Y-%m-%d"), changefreq:"weekly")
+      Sitemap.add_blog
+      Sitemap.add_store
+    end
+    File.open("#{Rails.root}/public/sitemap.xml", 'w') { |file| file.write(Sitemap.res) }
   end
 end
 
