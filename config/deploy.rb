@@ -57,6 +57,7 @@ after "deploy", "deploy:migrate"
  end
 
 before 'deploy:assets:precompile', 'deploy:symlink_db'
+after 'deploy:migrate', 'deploy:generate_sitemap'
 
 namespace :deploy do
   desc "Symlinks db and images"
@@ -64,5 +65,10 @@ namespace :deploy do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{deploy_to}/shared/db/production.sqlite3 #{release_path}/db/production.sqlite3"
     run "ln -nfs #{deploy_to}/shared/images #{release_path}/public/images"
+  end
+
+  desc "Generates sitemap"
+  task :generate_sitemap, :roles => :app do
+    run "cd #{release_path} && rake sitemap:generate"
   end
 end
