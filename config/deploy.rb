@@ -69,6 +69,6 @@ namespace :deploy do
 
   desc "Generates sitemap"
   task :generate_sitemap, :roles => :app do
-    run "cd #{release_path} && rake sitemap:generate"
+    run "cd #{release_path} && RAILS_ENV=production rake sitemap:generate"
   end
 end
