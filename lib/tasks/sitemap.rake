@@ -53,7 +53,7 @@ module Sitemap
     @@level=@@level+1
     block.call
     @@level=@@level-1
-    self.add "<\\#{method_sym}>"
+    self.add "</#{method_sym}>"
   end
 end
 
