@@ -1,34 +1,32 @@
 <%= link_to 'Новый пост', new_blog_post_path if admin? %>
 <div class="blog-posts-container">
-  <div class="row">
+  <div class="masonry-container">
   <% @blog_posts.each do |blog_post| %>
-    <div class="col-sm-6">
-      <div class="blog-post-container">
-	<div class="blog-post-index-header">
-	  <h3><%= link_to blog_post.header, blog_post %></h3>
-	</div>
-	<div class="blog-post-index-time">
-	  <h6>
-	    <small>
-	      <%= blog_post.created_at.localtime.strftime("%d-%m-%Y")%>&nbsp;
-	      <%= blog_post.created_at.localtime.strftime("%H:%M")%>
-	    </small>
-	  </h6>
-	</div>
-	<div class="blog-post-index-page">
-	  <%=render_from_text(blog_post.cut_page, binding)%>
-	  <p><%= link_to "Подробнее", blog_post %></p>
-	  <%= render :partial => 'likes', locals:{likes:blog_post.likes} %>
-	</div>
-	<% if admin? %>
-	  <%= link_to "Правка", edit_blog_post_path(blog_post)%> |
-	  <%= link_to "Удалить", blog_post, method: :delete, data: { confirm: 'Are you sure?' }%>
-	<% end %>
+    <div class="blog-post-container">
+      <div class="blog-post-index-header">
+	<h3><%= link_to blog_post.header, blog_post %></h3>
       </div>
+      <div class="blog-post-index-time">
+	<h6>
+	  <small>
+	    <%= blog_post.created_at.localtime.strftime("%d-%m-%Y")%>&nbsp;
+	    <%= blog_post.created_at.localtime.strftime("%H:%M")%>
+	  </small>
+	</h6>
+      </div>
+      <div class="blog-post-index-page">
+	<%=render_from_text(blog_post.cut_page, binding)%>
+	<p><%= link_to "Подробнее", blog_post %></p>
+	<%= render :partial => 'likes', locals:{likes:blog_post.likes} %>
+      </div>
+      <% if admin? %>
+	<%= link_to "Правка", edit_blog_post_path(blog_post)%> |
+	<%= link_to "Удалить", blog_post, method: :delete, data: { confirm: 'Are you sure?' }%>
+      <% end %>
     </div>
   <% end %>
-  </div>  
+  </div>
 </div>
-
+<script>startMasonry('.masonry-container', '.blog-post-container');</script>
 
 
