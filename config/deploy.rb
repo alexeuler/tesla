@@ -24,42 +24,24 @@ set :ssh_options, { :forward_agent => true }
  
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
-#ssh_options[:keys] = %w(/home/user/.ssh/id_rsa)
+before "deploy", "deploy:sudo"
+before "deploy:cleanup", "deploy:sudo"
 after "deploy", "deploy:migrate"
+before 'deploy:assets:precompile', 'deploy:symlink_db'
+after 'deploy:migrate', 'deploy:generate_sitemap'
 
 
-
-#set :application, "homa-online.ru"
-#set :repository,  "set your repository location here"
-
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-
-#role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-#role :app, "your app-server here"                          # This may be the same as your `Web` server
-#role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-#role :db,  "your slave db-server here"
-
-# if you want to clean up old releases on each deploy uncomment this:
-#after "deploy:restart", "deploy:cleanup"
-
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
+
    task :start do run "sudo /etc/init.d/thin start" end
+
    task :stop do run "sudo /etc/init.d/thin stop" end
+
    task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} /etc/init.d/thin restart"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
- end
 
-before 'deploy:assets:precompile', 'deploy:symlink_db'
-after 'deploy:migrate', 'deploy:generate_sitemap'
-
-namespace :deploy do
   desc "Symlinks db and images"
   task :symlink_db, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
@@ -71,4 +53,10 @@ namespace :deploy do
   task :generate_sitemap, :roles => :app do
     run "cd #{release_path} && RAILS_ENV=production rake sitemap:generate"
   end
+
+  desc "Promts for sudo pwd in advance"
+  task :sudo, :roles => :app do
+    run "#{try_sudo} ls"
+  end
+
 end
