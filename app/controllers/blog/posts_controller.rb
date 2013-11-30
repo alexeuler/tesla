@@ -8,7 +8,7 @@ class Blog::PostsController < ApplicationController
   # GET /blog/posts
   # GET /blog/posts.json
   def index
-    @blog_posts = Blog::Post.all
+    @blog_posts = Blog::Post.order('created_at DESC').all
   end
 
   # GET /blog/posts/1
