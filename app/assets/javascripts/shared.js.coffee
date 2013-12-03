@@ -3,17 +3,15 @@ window.startMasonry=(containerSelector,itemSelector, containerWidth)->
                         itemSelector:itemSelector,
                         transitionDuration: 0 
                 })
-                
                 cw=containerWidth || 400
-                gap=20
-                $(containerSelector).css("left","#{gap/2}px")
                 updateColumnWidth=->
                         w=$(containerSelector).width()
-                        cols=(w-w%cw)/cw
+                        gap=20*Math.max($(containerSelector).width()/1000, 1)
+                        $(containerSelector).css("left","#{gap/2}px")
+                        cols=Math.min((w-w%cw)/cw, $(containerSelector).find($(itemSelector)).length)
                         $(containerSelector).find(itemSelector).css('width', "#{w/cols-gap}px")
                         window.msn.options['columnWidth']=w/cols-1
                         window.msn.layout()
-
                 updateColumnWidth()
                 
                 $(window).resize (e)->
