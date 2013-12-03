@@ -24,6 +24,7 @@ set :ssh_options, { :forward_agent => true }
  
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
+set :sudo_prompt, ""
 before "deploy", "deploy:sudo"
 before "deploy:cleanup", "deploy:sudo"
 after "deploy", "deploy:migrate"
