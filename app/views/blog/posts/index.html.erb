@@ -1,7 +1,8 @@
 <%= link_to 'Новый пост', new_blog_post_path if admin? %>
 <div class="blog-posts-container">
   <div class="masonry-container">
-  <% @blog_posts.each do |blog_post| %>
+    <% @blog_posts.each do |blog_post| %>
+      <%@blog_post=blog_post #for ubiqitous context with show%>
     <div class="blog-post-container">
       <div class="blog-post-index-header">
 	<h3><%= link_to blog_post.header, blog_post %></h3>
