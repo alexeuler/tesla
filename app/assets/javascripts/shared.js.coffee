@@ -1,6 +1,7 @@
 window.startMasonry=(containerSelector,itemSelector, containerWidth)->
                 window.msn=new Masonry($(containerSelector)[0], {
-                        itemSelector:itemSelector
+                        itemSelector:itemSelector,
+                        transitionDuration: 0 
                 })
                 
                 cw=containerWidth || 400
