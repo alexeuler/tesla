@@ -1,12 +1,4 @@
-@font-face {
-    font-family: 'HattoriHanzo';
-    src: asset-url('Hattori_Hanzo-webfont.eot');
-    src: asset-url('Hattori_Hanzo-webfont.eot') format('embedded-opentype'),
-    asset-url('Hattori_Hanzo-webfont.svg') format('svg'),    
-    asset-url('Hattori_Hanzo-webfont.ttf') format('truetype'),    
-    asset-url('Hattori_Hanzo-webfont.woff') format('woff');
-    }
-
+ 
 @font-face {
     font-family: 'RobotoLight';
     src: asset-url('Roboto-Light-webfont.eot');
@@ -15,6 +7,17 @@
     asset-url('Roboto-Light-webfont.ttf') format('truetype'),    
     asset-url('Roboto-Light-webfont.woff') format('woff');
     }
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: asset-url('Roboto-Regular-webfont.eot');
+    src: asset-url('Roboto-Regular-webfont.eot') format('embedded-opentype'),
+    asset-url('Roboto-Regular-webfont.svg') format('svg'),    
+    asset-url('Roboto-Regular-webfont.ttf') format('truetype'),    
+    asset-url('Roboto-Regular-webfont.woff') format('woff');
+    font-weight:bold;
+    }
+
 
 @font-face {
     font-family: 'RobotoCondensedLight';
