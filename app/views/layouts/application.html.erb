@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Тесла</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
+    <title><%=content_for?(:title) ? yield(:title) : "Тесла"%></title>
+     <%if content_for?(:description)%>
+      <meta name="description" content="<%=yield :description%>">
+      <%end%>
+      <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="global-container">
@@ -12,10 +15,10 @@
       <div class="application-container">
 	<p id="notice"><%= notice %></p>
 	<%= render partial: "shared/breadcrumbs", :locals=>{
-	    :crumbs =>@crumbs}%>
+	      :crumbs =>@crumbs}%>
 	<%= content_for?(:content) ? yield(:content) : yield %>	
       </div>
     </div>
-    	<%= render partial: "shared/metrika"%>
+    <%= render partial: "shared/metrika"%>
   </body>
 </html>
