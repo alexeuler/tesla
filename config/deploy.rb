@@ -24,9 +24,11 @@ set :ssh_options, { :forward_agent => true }
  
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
-set :sudo_prompt, ""
+
 before "deploy", "deploy:sudo"
+before "deploy:cleanup", "deploy:no_sudo_prompt"
 before "deploy:cleanup", "deploy:sudo"
+after "deploy:cleanup", "deploy:sudo_prompt"
 after "deploy", "deploy:migrate"
 before 'deploy:assets:precompile', 'deploy:symlink_db'
 after 'deploy:migrate', 'deploy:generate_sitemap'
@@ -59,5 +61,14 @@ after 'deploy:migrate', 'deploy:generate_sitemap'
   task :sudo, :roles => :app do
     run "#{try_sudo} ls"
   end
+
+  task :no_sudo_prompt, :roles => :app do
+    set :sudo_prompt, ""
+  end
+
+  task :sudo_prompt, :roles => :app do
+    set :sudo_prompt, "sudo password: "
+  end
+  
 
 end
