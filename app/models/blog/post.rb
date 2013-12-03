@@ -4,7 +4,10 @@ class Blog::Post < ActiveRecord::Base
 
   def cut_page
     /<cut\/>/.match(page)
-    $` || page
+    cut_page=$` || page
+    cut_page.gsub!(/<%(.*)content_for(.*):title(.*)%>/, "")
+    cut_page.gsub!(/<%(.*)content_for(.*):description(.*)%>/, "")
+    cut_page
   end
 
   def uncut_page
